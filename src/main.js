@@ -1,54 +1,30 @@
-const readline = require('readline');
-const https = require('https');
-
-function fetchJson(url) {
-  return new Promise((resolve, reject) => {
-    https.get(url, res => {
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => {
-        try {
-          resolve(JSON.parse(data));
-        } catch (e) {
-          reject(e);
-        }
-      });
-    }).on('error', reject);
-  });
-}
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-rl.question('Enter a city name: ', async (city) => {
+async function getWeather(city) {
   try {
     const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`;
-    const geoData = await fetchJson(geoUrl);
+    const geoRes = await fetch(geoUrl);
+    const geoData = await geoRes.json();
 
     if (!geoData.results || geoData.results.length === 0) {
-      console.log('City not found.');
-      rl.close();
-      return;
+      throw new Error("City not found.");
     }
 
-    const { latitude, longitude } = geoData.results[0];
+    const { latitude, longitude, name } = geoData.results[0];
+
     const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
-    const weatherData = await fetchJson(weatherUrl);
+    const weatherRes = await fetch(weatherUrl);
+    const weatherData = await weatherRes.json();
 
-    const temp = weatherData.current_weather?.temperature;
-
-    if (temp !== undefined) {
-      console.log(`Current temperature in ${city}: ${temp}°C`);
-    } else {
-      console.log('Weather data not available.');
-    }
-
+    return {
+      city: name,
+      temperature: weatherData.current_weather.temperature,
+      description: "Refer to the documentation for further weather details"
+    };
   } catch (error) {
-    console.error('Error:', error.message);
-  } finally {
-    rl.close();
+    console.error("Error:", error.message);
   }
-});
+}
+
+getWeather("Tokyo").then(console.log);
+
+
 
