@@ -1,5 +1,9 @@
 async function getWeather(city) {
   try {
+    if (!city || city.trim() === "") {
+  throw new Error("City name is required.");
+}
+
     const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`;
     const geoRes = await fetch(geoUrl);
     const geoData = await geoRes.json();
