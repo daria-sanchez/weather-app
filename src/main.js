@@ -28,7 +28,7 @@ async function getWeather(city) {
   }
 }
 
-getWeather("").then(console.log);
+getWeather("FakeCityXYZ").then(console.log);
 
 
 
