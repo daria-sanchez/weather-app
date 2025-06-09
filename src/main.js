@@ -42,12 +42,22 @@ function getFromCache(key) {
   return null;
 }
 
+
 async function getWeather(city) {
   try {
     if (!city || city.trim() === "") {
       throw new Error("City name is required.");
     }
 
+    // 🔄 Step 1: Check the cache
+    const cacheKey = "weather_" + city.toLowerCase().trim();
+    const cachedData = getFromCache(cacheKey);
+    if (cachedData) {
+      console.log(`Using cached weather data for ${city}`);
+      return cachedData;
+    }
+
+    // 🌍 Step 2: Get coordinates
     const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`;
     const geoRes = await fetch(geoUrl);
     const geoData = await geoRes.json();
@@ -58,15 +68,23 @@ async function getWeather(city) {
 
     const { latitude, longitude, name } = geoData.results[0];
 
+    // 🌦️ Step 3: Get weather
     const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
     const weatherRes = await fetch(weatherUrl);
     const weatherData = await weatherRes.json();
 
-    return {
+    // 🧩 Step 4: Build result object
+    const result = {
       city: name,
       temperature: weatherData?.current_weather?.temperature ?? "Unavailable",
       description: "Refer to the documentation for further weather details"
     };
+
+    // 💾 Step 5: Save to cache
+    saveToCache(cacheKey, result);
+    console.log(`Fetched new weather data for ${city}`);
+    return result;
+
   } catch (error) {
     console.error("Error:", error.message);
     return {
@@ -76,6 +94,7 @@ async function getWeather(city) {
     };
   }
 }
+
 
 // Test call
 getWeather("New York City").then(console.log);
