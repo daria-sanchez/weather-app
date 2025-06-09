@@ -24,7 +24,7 @@ async function getWeather(city) {
   }
 }
 
-getWeather("Tokyo").then(console.log);
+getWeather("New York City").then(console.log);
 
 
 
