@@ -15,8 +15,10 @@ async function getWeather(city) {
     const { latitude, longitude, name } = geoData.results[0];
 
     const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
-    const weatherRes = await fetch(weatherUrl);
-    const weatherData = await weatherRes.json();
+    // const weatherRes = await fetch(weatherUrl);
+    //const weatherData = await weatherRes.json();
+    const weatherData = {}; // Simulate an empty/unexpected response
+
 
     return {
       city: name,
