@@ -35,7 +35,8 @@ function getFromCache(key) {
   if (!recordString) return null;
 
   const record = JSON.parse(recordString);
-  const oneHour = 60 * 60 * 1000; // 1 hour
+  //const oneHour = 60 * 60 * 1000; // 1 hour
+  const oneHour = 10 * 1000; // 10 seconds
   if (Date.now() - record.timestamp < oneHour) {
     return record.data;
   }
