@@ -97,6 +97,24 @@ async function getWeather(city) {
 
 
 // Test call
-getWeather("New York City").then(console.log);
+//getWeather("New York City").then(console.log);
 
+// getWeather("New York City").then(console.log); // <- optional now
+document.getElementById("weather-form").addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const cityInput = document.getElementById("city-input").value.trim();
+  if (!cityInput) return;
+
+  const result = await getWeather(cityInput);
+
+  const resultDiv = document.getElementById("weather-result");
+  resultDiv.innerHTML = `
+    <h2>${result.city}</h2>
+    <p>Temperature: ${result.temperature}°C</p>
+    <p>${result.description}</p>
+  `;
+
+  console.log(result); // Helpful for checking if data came from cache
+});
 
