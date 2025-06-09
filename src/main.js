@@ -22,7 +22,7 @@ async function getWeather(city) {
 
     return {
       city: name,
-      temperature: weatherData.current_weather.temperature,
+      temperature: weatherData?.current_weather?.temperature ?? "Unavailable",
       description: "Refer to the documentation for further weather details"
     };
   } catch (error) {
