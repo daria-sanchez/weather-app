@@ -20,6 +20,7 @@
  * If the city is blank, not found, or if the API fails, an error is logged to the console,
  * and the returned object contains "Unavailable" with an appropriate description.
  */
+console.log("✅ main.js is loaded");
 
 function saveToCache(key, data) {
   const record = {
