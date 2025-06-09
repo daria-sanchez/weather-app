@@ -20,6 +20,28 @@
  * If the city is blank, not found, or if the API fails, an error is logged to the console,
  * and the returned object contains "Unavailable" with an appropriate description.
  */
+
+function saveToCache(key, data) {
+  const record = {
+    data: data,
+    timestamp: Date.now()
+  };
+  localStorage.setItem(key, JSON.stringify(record));
+}
+
+function getFromCache(key) {
+  const recordString = localStorage.getItem(key);
+  if (!recordString) return null;
+
+  const record = JSON.parse(recordString);
+  const oneHour = 60 * 60 * 1000; // 1 hour
+  if (Date.now() - record.timestamp < oneHour) {
+    return record.data;
+  }
+
+  return null;
+}
+
 async function getWeather(city) {
   try {
     if (!city || city.trim() === "") {
