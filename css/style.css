@@ -1,3 +1,83 @@
-weather-app/
-└── src/
-    └── main.js
+/* --- css/style.css ---------------------------------------- */
+/* Layout basics */
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, #6fb1fc 0%, #4364f7 100%);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Container */
+.app-container {
+  background: rgba(255, 255, 255, 0.1);      /* translucent card */
+  backdrop-filter: blur(8px);
+  padding: 2rem 2.5rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+/* Headline */
+h1 {
+  font-size: 1.75rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+/* Form elements */
+#weather-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+#city-input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+#city-input:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+button[type="submit"] {
+  padding: 0.5rem 1rem;
+  background: #ffcb68;
+  color: #000;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+}
+
+/* Weather result */
+#weather-result h2 {
+  margin: 0 0 0.25rem;
+}
+
+#weather-result p {
+  margin: 0.25rem 0;
+  font-size: 1.1rem;
+}
+
+/* Footer */
+footer {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
