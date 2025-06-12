@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Simple Open-Meteo weather app for any city.">
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; object-src 'none'; upgrade-insecure-requests">
   <title>Weather App</title>
 
-  <!-- Your main stylesheet -->
+  <!-- Your main stylesheet (leave the path as-is) -->
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Optional: class that keeps the label accessible but invisible -->
+  <!-- Helper class so the label is accessible but invisible -->
   <style>
     .visually-hidden {
       position: absolute !important;
@@ -33,19 +30,18 @@
         type="text"
         id="city-input"
         placeholder="Enter city (e.g., New York City)"
-        autocomplete="off"
-        spellcheck="false"
         required
       />
       <button type="submit">Get Weather</button>
     </form>
 
-    <div id="weather-result" aria-live="polite"></div>
+    <div id="weather-result"></div>
   </div>
 
+  <!-- Optional attribution line; remove if you don’t need it -->
   <footer>Weather data © Open-Meteo</footer>
 
-  <!-- Defer prevents render-blocking; keep the path the same as on disk -->
+  <!-- Defer prevents the script from blocking page render -->
   <script src="src/main.js" defer></script>
 </body>
 </html>
