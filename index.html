@@ -1,54 +1,51 @@
-diff --git a/index.html b/index.html
-index 6ae5c1b..3d1f945 100644
---- a/index.html
-+++ b/index.html
-@@
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-+
-+  <!-- ✨ New: basic SEO + CSP -->
-+  <meta name="description" content="Simple Open-Meteo weather app for any city." />
-+  <meta http-equiv="Content-Security-Policy"
-+        content="default-src 'self'; object-src 'none'; upgrade-insecure-requests">
-+
-   <title>Weather App</title>
-   <link rel="stylesheet" href="css/style.css">
- </head>
- <body>
-   <div class="app-container">
-     <h1>Weather in Your City</h1>
--    <form id="weather-form">
--      <input type="text" id="city-input"
--             placeholder="Enter city (e.g., New York City)"
--             required />
--      <button type="submit">Get Weather</button>
--    </form>
--    <div id="weather-result"></div>
-+
-+    <form id="weather-form">
-+      <!-- ✨ New: accessible label (visually hidden) -->
-+      <label for="city-input" class="visually-hidden">City</label>
-+      <input
-+        type="text"
-+        id="city-input"
-+        placeholder="Enter city (e.g., New York City)"
-+        autocomplete="off"
-+        inputmode="text"
-+        spellcheck="false"
-+        required
-+      />
-+      <button type="submit">Get Weather</button>
-+    </form>
-+
-+    <!-- ✨ New: aria-live for screen-reader announcements -->
-+    <div id="weather-result" aria-live="polite"></div>
-   </div>
- 
-+  <!-- ✨ New: attribution footer per Open-Meteo’s terms -->
-+  <footer>Weather data © Open-Meteo</footer>
-+
--  <script src="src/main.js"></script>
-+  <!-- ✨ New: defer to prevent render-blocking -->
-+  <script src="src/main.js" defer></script>
- </body>
- </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Simple Open-Meteo weather app for any city.">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; object-src 'none'; upgrade-insecure-requests">
+  <title>Weather App</title>
+
+  <!-- Your main stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Optional: class that keeps the label accessible but invisible -->
+  <style>
+    .visually-hidden {
+      position: absolute !important;
+      height: 1px; width: 1px;
+      margin: -1px; border: 0; padding: 0;
+      clip: rect(0 0 0 0); clip-path: inset(50%);
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-container">
+    <h1>Weather in Your City</h1>
+
+    <form id="weather-form">
+      <label for="city-input" class="visually-hidden">City</label>
+      <input
+        type="text"
+        id="city-input"
+        placeholder="Enter city (e.g., New York City)"
+        autocomplete="off"
+        spellcheck="false"
+        required
+      />
+      <button type="submit">Get Weather</button>
+    </form>
+
+    <div id="weather-result" aria-live="polite"></div>
+  </div>
+
+  <footer>Weather data © Open-Meteo</footer>
+
+  <!-- Defer prevents render-blocking; keep the path the same as on disk -->
+  <script src="src/main.js" defer></script>
+</body>
+</html>
