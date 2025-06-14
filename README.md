@@ -47,7 +47,7 @@ Just open `index.html` in your browser.
 - Add weather icons
 
 ## Screenshots
-![Tokyo query](screenshots/tokyo.png)
+<img src="screenshots/tokyo.png" width="400">
 
-![Error-banner.png](screenshots/error.png)
+<img src="screenshots/error.png" width="400">
 
