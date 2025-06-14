@@ -1,7 +1,8 @@
 // js/app.js
 // Weather App — Open-Meteo implementation
 // --------------------------------------
-// Skip all DOM work when tests import this file in Node
+
+// ---------- Browser vs. Test Guard ----------
 const isBrowser = typeof document !== 'undefined';
 
 let form, cityIn, recentEl, results;
@@ -12,7 +13,7 @@ if (isBrowser) {
   results  = document.getElementById('results');
 }
 
-// ----- Local-storage helpers -----
+// ---------- Local-storage helpers ----------
 const STORAGE_KEY = 'weather_recent_cities';
 const MAX_RECENTS = 5;
 
@@ -25,6 +26,7 @@ function saveRecent(city) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(list.slice(0, MAX_RECENTS)));
 }
 function renderRecents() {
+  if (!isBrowser) return;                   // skip during tests
   recentEl.innerHTML = '';
   getRecents().forEach(city => {
     const span = document.createElement('span');
@@ -35,7 +37,7 @@ function renderRecents() {
   });
 }
 
-// ----- API helpers -----
+// ---------- API helpers ----------
 async function fetchCoords(city) {
   const res = await fetch(
     `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
@@ -58,14 +60,14 @@ async function fetchWeather({ latitude, longitude }) {
   return parseWeather(json);
 }
 
-function parseWeather(json) {
+export function parseWeather(json) {        // exported for tests
   if (!json.current_weather)
     throw new Error('Unexpected response format from weather API');
   const { temperature, windspeed, weathercode, time } = json.current_weather;
   return { temperature, windspeed, weathercode, time };
 }
 
-// ----- UI helpers -----
+// ---------- UI helpers ----------
 function codeToText(code) {
   const map = {
     0: 'Clear', 1: 'Mainly clear', 2: 'Partly cloudy', 3: 'Overcast',
@@ -86,8 +88,9 @@ function showCard(city, data) {
   `;
   results.prepend(div);
 }
+
 function showError(msg) {
-  // remove any existing identical error first
+  // remove any identical existing error
   [...results.querySelectorAll('.error')].forEach(el => {
     if (el.textContent === msg) el.remove();
   });
@@ -98,7 +101,7 @@ function showError(msg) {
   results.prepend(div);
 }
 
-// ----- Controller -----
+// ---------- Controller ----------
 async function fetchAndRender(city) {
   try {
     const coords = await fetchCoords(city);
@@ -114,12 +117,13 @@ async function fetchAndRender(city) {
   }
 }
 
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  const city = cityIn.value.trim();
-  if (city) fetchAndRender(city);
-});
+// ---------- Browser-only bootstrapping ----------
+if (isBrowser) {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const city = cityIn.value.trim();
+    if (city) fetchAndRender(city);
+  });
 
-// initial recent-search render
-renderRecents();
-
+  renderRecents();          // initial paint
+}
