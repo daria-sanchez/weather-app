@@ -74,6 +74,7 @@ weather-app/
 <img src="screenshots/error.png" width="400">
 
 ---
+---
 
 ## 🙏 Thanks for Stopping By!
 
