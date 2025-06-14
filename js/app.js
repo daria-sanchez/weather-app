@@ -1,6 +1,16 @@
 // js/app.js
 // Weather App — Open-Meteo implementation
 // --------------------------------------
+// Skip all DOM work when tests import this file in Node
+const isBrowser = typeof document !== 'undefined';
+
+let form, cityIn, recentEl, results;
+if (isBrowser) {
+  form     = document.getElementById('searchForm');
+  cityIn   = document.getElementById('cityInput');
+  recentEl = document.getElementById('recent');
+  results  = document.getElementById('results');
+}
 
 // ----- DOM shortcuts -----
 const form     = document.getElementById('searchForm');
