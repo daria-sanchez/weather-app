@@ -1,0 +1,17 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "A simple JavaScript weather app that fetches data from the Open-Meteo API and displays current weather conditions for a given city.",
+  "main": "index.js",
+  "scripts": {
+  "start": "live-server",
+  "test": "vitest run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "vitest": "^3.2.3"
+  }
+}
