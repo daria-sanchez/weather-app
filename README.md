@@ -43,11 +43,11 @@ cd weather-app
 npm install          # installs live-server & vitest
 npm start            # launches at http://127.0.0.1:<port>
 
-
-## Running Tests
+---
+### Running Tests
 npm test             # Vitest – should report 2 passing specs
 
-## Project Structure
+### Project Structure
 weather-app/
 ├── css/style.css
 ├── js/app.js
@@ -59,12 +59,12 @@ weather-app/
 ├── LICENSE
 └── package.json
 
-## Ideas for Future Work
+### Ideas for Future Work
 **Add browser geolocation (auto-detect current city).
 **Map weathercode to icon sprites for visual flair.
 **Offline caching of the most recent successful responses.
 
-## Screenshots
+### Screenshots
 <img src="screenshots/tokyo.png" width="400">
 
 <img src="screenshots/error.png" width="400">
