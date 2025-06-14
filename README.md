@@ -43,7 +43,7 @@ cd weather-app
 npm install          # installs live-server & vitest
 npm start            # launches at http://127.0.0.1:<port>
 
----
+
 ### Running Tests
 npm test             # Vitest – should report 2 passing specs
 
