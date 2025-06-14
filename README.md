@@ -1,5 +1,7 @@
 # Weather App
 
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+
 A simple JavaScript weather app that fetches data from the Open-Meteo API and displays current weather conditions for any city.
 
 ## Features
