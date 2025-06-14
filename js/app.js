@@ -12,12 +12,6 @@ if (isBrowser) {
   results  = document.getElementById('results');
 }
 
-// ----- DOM shortcuts -----
-const form     = document.getElementById('searchForm');
-const cityIn   = document.getElementById('cityInput');
-const recentEl = document.getElementById('recent');
-const results  = document.getElementById('results');
-
 // ----- Local-storage helpers -----
 const STORAGE_KEY = 'weather_recent_cities';
 const MAX_RECENTS = 5;
