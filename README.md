@@ -48,6 +48,7 @@ npm start            # launches at http://127.0.0.1:<port>
 npm test             # Vitest – should report 2 passing specs
 
 ### Project Structure
+```bash
 weather-app/
 ├── css/style.css
 ├── js/app.js
@@ -58,7 +59,7 @@ weather-app/
 ├── index.html
 ├── LICENSE
 └── package.json
-
+```
 ### Ideas for Future Work
 **Add browser geolocation (auto-detect current city).
 **Map weathercode to icon sprites for visual flair.
