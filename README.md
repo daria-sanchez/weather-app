@@ -1,51 +1,68 @@
-# Weather App
-
+# Weather App  
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 
-A simple JavaScript weather app that fetches data from the Open-Meteo API and displays current weather conditions for any city.
+A lightweight single-page JavaScript app that turns any city name into an instant weather snapshot using the **Open-Meteo** APIs.
 
-## Features
+---
+
+## Features 💡
 
 ### 🌐 Core Functionality
-- **City-to-Weather Pipeline** – Turns any city name into latitude / longitude via the *Open-Meteo Geocoding API*, then fetches live conditions from the *Open-Meteo Forecast API* in a single click.  
-- **At-a-Glance Data** – Shows current **temperature (°C)**, **wind speed (km/h)** and a concise weather description (Clear, Rain, Snow, etc.).
+- **City → Weather pipeline** – Geocodes the city via the *Open-Meteo Geocoding API*, then fetches real-time conditions from the *Forecast API* in one click.  
+- **At-a-Glance Data** – Current **temperature (°C)**, **wind speed (km/h)** and a plain-language weather description.
 
 ### 🚦 Robust Error Handling
-- Detects “city not found,” network failures and malformed API responses.  
-- Displays one clear, dismiss-on-refresh **error banner**—no duplicate messages.
+- Detects “city not found,” network time-outs and malformed responses.  
+- Shows a single, easy-to-dismiss **error banner**—no duplicate messages.
 
-### ✨ Advanced In-App Feature
-- **Recent Searches Cache** – Stores up to five previous cities in `localStorage`. Each appears as a clickable **chip** for instant re-query.
+### ✨ Advanced UX
+- **Recent-Search Cache** – Stores up to five cities in `localStorage`; each appears as a clickable **chip** for one-tap re-query.
 
-### 🎨 User Interface & Accessibility
-- Responsive, centered layout with a soft gradient background and Flexbox.  
-- Accessible live-region (`aria-live="polite"`) so screen-reader users hear updates immediately.  
-- Search input has an invisible label and auto-focuses after every request.
+### 🎨 UI & Accessibility
+- Centered, mobile-friendly Flexbox layout with a soft gradient background.  
+- Live-region (`aria-live="polite"`) so screen-reader users hear updates instantly.  
+- Hidden label & autofocus for keyboard accessibility.
 
 ### 🛠️ Code Quality & Testing
 - Single ES-module (`app.js`) organized into storage, API, UI and controller helpers.  
-- Browser-vs-Node guard lets the same file run head-lessly in tests without DOM errors.  
-- **Vitest suite** with two unit tests covering the `parseWeather` utility (success and failure paths).
+- Browser-vs-Node guard lets tests import the file head-lessly.  
+- **Vitest** suite (2 specs) covering happy-path parsing and error handling.
 
 ### 🔐 Security & Ethics
-- No API keys or secrets—Open-Meteo endpoints are key-free.  
-- `npm audit fix` run 2025-06-14: zero high-severity vulnerabilities.  
-- AI assistance noted; all code reviewed and released under MIT license.
+- Key-free endpoints—no secrets committed.  
+- `npm audit` (run 2025-06-14) shows **0 high-severity** issues.  
+- Portions refactored with ChatGPT-o3; all code reviewed and released under the MIT License (see `LICENSE`).
 
-## Setup
-Just open `index.html` in your browser.
+---
 
-## Project Files
+## Setup 🚀
 
-- Index.html
-- app.js
-- style.css
-- __tests__
+```bash
+git clone https://github.com/<your-username>/weather-app.git
+cd weather-app
+npm install          # installs live-server & vitest
+npm start            # launches at http://127.0.0.1:<port>
 
-## To Do
-- Add geolocation or geocoding support
-- Improve error handling
-- Add weather icons
+
+## Running Tests
+npm test             # Vitest – should report 2 passing specs
+
+## Project Structure
+weather-app/
+├── css/style.css
+├── js/app.js
+├── screenshots/
+│   ├── tokyo.png
+│   └── error.png
+├── __tests__/app.test.js
+├── index.html
+├── LICENSE
+└── package.json
+
+## Ideas for Future Work
+**Add browser geolocation (auto-detect current city).
+**Map weathercode to icon sprites for visual flair.
+**Offline caching of the most recent successful responses.
 
 ## Screenshots
 <img src="screenshots/tokyo.png" width="400">
