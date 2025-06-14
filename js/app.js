@@ -82,8 +82,12 @@ function showCard(city, data) {
   `;
   results.prepend(div);
 }
-
 function showError(msg) {
+  // remove any existing identical error first
+  [...results.querySelectorAll('.error')].forEach(el => {
+    if (el.textContent === msg) el.remove();
+  });
+
   const div = document.createElement('div');
   div.className = 'error';
   div.textContent = msg;
