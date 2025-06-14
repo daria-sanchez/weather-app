@@ -5,7 +5,6 @@
 A simple JavaScript weather app that fetches data from the Open-Meteo API and displays current weather conditions for any city.
 
 ## Features
-## Features
 
 ### 🌐 Core Functionality
 - **City-to-Weather Pipeline** – Turns any city name into latitude / longitude via the *Open-Meteo Geocoding API*, then fetches live conditions from the *Open-Meteo Forecast API* in a single click.  
