@@ -6,9 +6,17 @@ A simple JavaScript weather app that fetches data from the Open-Meteo API and di
 - User input for city
 - API call to Open-Meteo
 - Displays temperature and wind speed
+- Displays error message if city is not found
 
 ## Setup
 Just open `index.html` in your browser.
+
+## Project Files
+
+- Index.html
+- app.js
+- style.css
+- __tests__
 
 ## To Do
 - Add geolocation or geocoding support
