@@ -63,9 +63,10 @@ weather-app/
 └── package.json
 ```
 ### Ideas for Future Work
-**Add browser geolocation (auto-detect current city).
-**Map weathercode to icon sprites for visual flair.
-**Offline caching of the most recent successful responses.
+
+*Add browser geolocation (auto-detect current city).
+*Map weathercode to icon sprites for visual flair.
+*Offline caching of the most recent successful responses.
 
 ### Screenshots
 <img src="screenshots/tokyo.png" width="400">
