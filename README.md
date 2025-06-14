@@ -48,5 +48,6 @@ Just open `index.html` in your browser.
 
 ## Screenshots
 ![Tokyo query](screenshots/tokyo.png)
-![Error banner](screenshots/error.png)
+
+![Error-banner.png](screenshots/error.png)
 
