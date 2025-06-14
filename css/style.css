@@ -88,3 +88,20 @@ h1 {
   display: block;       /* forces a line break after the heading */
   margin-bottom: 1rem;  /* adds breathing room above the form */
 }
+
+/* Recent-search chips */
+.chip {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.9); /* white pill */
+  color: #000;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  margin: 0.25rem 0.25rem 0;            /* top spacing & horizontal gap */
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.chip:hover {
+  background: #ffcb68;                  /* same yellow as button on hover */
+}
