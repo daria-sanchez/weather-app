@@ -81,3 +81,9 @@ footer {
   font-size: 0.85rem;
   opacity: 0.8;
 }
+
+/* Ensure the heading sits on its own line */
+h1 {
+  display: block;       /* forces a line break after the heading */
+  margin-bottom: 1rem;  /* adds breathing room above the form */
+}
