@@ -4,41 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Weather App</title>
-
-  <!-- Your main stylesheet (leave the path as-is) -->
-  <link rel="stylesheet" href="css/style.css">
-
-  <!-- Helper class so the label is accessible but invisible -->
-  <style>
-    .visually-hidden {
-      position: absolute !important;
-      height: 1px; width: 1px;
-      margin: -1px; border: 0; padding: 0;
-      clip: rect(0 0 0 0); clip-path: inset(50%);
-      overflow: hidden;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
-  <div class="app-container">
-    <h1>Weather in Your City</h1>
+  <h1>Weather App</h1>
 
-    <form id="weather-form">
-      <label for="city-input" class="visually-hidden">City</label>
-      <input
-        type="text"
-        id="city-input"
-        placeholder="Enter city (e.g., New York City)"
-        required
-      />
-      <button type="submit">Get Weather</button>
-    </form>
+  <form id="searchForm" class="search">
+    <label for="cityInput" class="visually-hidden">City</label>
+    <input id="cityInput" type="text" placeholder="Enter city…" required />
+    <button type="submit">Get Weather</button>
+  </form>
 
-    <div id="weather-result"></div>
-  </div>
+  <section id="recent" aria-label="Recent searches"></section>
 
-  <!-- Defer prevents the script from blocking page render -->
-  <script src="src/main.js" defer></script>
+  <section id="results" aria-live="polite"></section>
+
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
