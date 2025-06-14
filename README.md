@@ -75,8 +75,6 @@ weather-app/
 
 ---
 
----
-
 ## 🙏 Thanks for Stopping By!
 
 I appreciate you taking the time to explore this Weather App project. Happy coding!☀️
